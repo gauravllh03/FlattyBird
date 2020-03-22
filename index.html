@@ -96,6 +96,10 @@
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
+		window.onload = function() {
+  		var context = new AudioContext();
+  		document.getElementById('player').play();
+		}
        $(function()
        {
        	//saving dom objects to variables
@@ -129,7 +133,6 @@
          if(game_over===false)
          {
             player1.pause();
-            player.play();
          }
 
          var the_game=setInterval(function(){
@@ -213,14 +216,14 @@
          //stoping the game on collision
          function stop_the_game()
          {
-         	clearInterval(the_game);
-            var player=document.getElementById('player');
-            var oldSrc=player.src;
-            //player.src="";
-            player.pause();
+         	//clearInterval(the_game);
+         	game_over=true;
+            //var player=document.getElementById('player');
+            //var oldSrc=player.src;
+            player.src="";
             player1.play();
          	restart_btn.slideDown();
-         	game_over=true;
+         	
          }
 
          //restart game if collision occurs
@@ -254,10 +257,10 @@
 <body>
 	  
 
-            <audio  id="player" controls loop autoplay="true">
+            <audio  id="player" controls loop autoplay>
             <source src="udi.mp3" type="audio/mpeg">
             </audio>
-            <audio  id="player1" controls loop  autoplay="true">
+            <audio  id="player1" >
             <source src="kutta.mp3" type="audio/mpeg">
             </audio>
 	 <a href="rules.html">RULES</a>
